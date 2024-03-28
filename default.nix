@@ -140,6 +140,7 @@ in {
         buildInputs = [ python3 ];
 
         dontBuild = true;
+        dontFixup = true;
 
         sourceRoot = ".";
 
