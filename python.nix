@@ -4,7 +4,7 @@
 , clang-tools_17
 , gitlint
 , lib
-, ...
+, extraLibs ? [ ]
 }:
 
 let
@@ -32,5 +32,5 @@ lib.warnIf
   "zephyr-pythonEnv: Found invalid Python constraints for: ${builtins.toJSON (lib.attrNames invalidConstraints)}"
   (python.withPackages (project.renderers.withPackages {
     inherit python;
-    extraPackages = ps: [ ps.west ];
+    extraPackages = ps: [ ps.west ] ++ extraLibs;
   }))
